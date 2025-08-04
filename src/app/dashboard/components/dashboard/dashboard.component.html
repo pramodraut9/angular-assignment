@@ -1,0 +1,40 @@
+<p>dashboard works!</p>
+<div class="dashboard-welcome-card p-4 rounded shadow-sm mb-4">
+  <i class="bi bi-gear-fill gear-icon"></i>
+
+  <div class="row align-items-center">
+    <!-- left: texts -->
+    <div class="col-md-8">
+      <h2 class="mb-4">WELCOME, {{ userName | uppercase }} !</h2>
+
+      <div class="row info-rows">
+        <div class="col-6 info-col mb-3">
+          <small class="label">Test Team</small>
+          <div class="value">{{ teamName }}</div>
+        </div>
+        <div class="col-6 info-col mb-3">
+          <small class="label">E-mail</small>
+          <div class="value">{{ email }}</div>
+        </div>
+        <div class="col-6 info-col">
+          <small class="label">Sales Person</small>
+          <div class="value">{{ salesPerson }}</div>
+        </div>
+        <div class="col-6 info-col">
+          <small class="label">Contact Number</small>
+          <div class="value">{{ contactNumber }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- right: avatar -->
+    <div class="col-md-4 text-center">
+      <div class="avatar-wrapper mx-auto">
+        <img [src]="avatarUrl" alt="User Avatar" class="avatar" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- your existing dashboard content goes below -->
+<router-outlet></router-outlet>

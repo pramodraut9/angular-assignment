@@ -1,0 +1,56 @@
+<nav class="sidebar d-flex flex-column justify-content-between">
+  <div class="logo text-center py-4">
+    <img src="assets/logo.png" alt="Logo" class="img-fluid" />
+  </div>
+
+  <!-- Main nav links -->
+  <ul class="nav flex-column">
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [routerLink]="['/dashboard']"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        Dashboard
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [routerLink]="['/users']"
+        routerLinkActive="active"
+      >
+        User Page
+      </a>
+    </li>
+    <li class="nav-item">
+      <a
+        class="nav-link"
+        [routerLink]="['/products']"
+        routerLinkActive="active"
+      >
+        Product Page
+      </a>
+    </li>
+  </ul>
+
+  <!-- Footer actions -->
+  <ul class="nav flex-column mb-4">
+    <li class="nav-item">
+      <a class="nav-link small" href="#">
+        <i class="bi bi-gear-fill me-2"></i>Setting
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link small" href="#">
+        <i class="bi bi-question-circle-fill me-2"></i>Help
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link small" href="#">
+        <i class="bi bi-box-arrow-right me-2"></i>Logout
+      </a>
+    </li>
+  </ul>
+</nav>

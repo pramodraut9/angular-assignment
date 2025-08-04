@@ -1,0 +1,61 @@
+.dashboard-welcome-card {
+  position: relative;
+  background-color: #0781b8;
+  color: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 200px; height: 100%;
+    background: url('/assets/decorative-curve.svg') no-repeat center;
+    background-size: contain;
+    opacity: 0.2;
+  }
+
+  .gear-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.25rem;
+    cursor: pointer;
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+
+  .info-rows {
+    .info-col {
+      .label {
+        display: block;
+        font-size: 0.75rem;
+        opacity: 0.8;
+        margin-bottom: 0.25rem;
+      }
+      .value {
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+    }
+  }
+
+  .avatar-wrapper {
+    width: 120px;
+    height: 120px;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-block;
+
+    .avatar {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+.app-header {
+  height: 60px;
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
+
+  // subtle background wave/shape on the right
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 200px;
+    background: url('assets/header-wave.svg') no-repeat center right;
+    background-size: cover;
+    opacity: 0.2;
+  }
+
+  .page-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .actions {
+    .btn-link {
+      color: #555;
+      font-size: 1.2rem;
+
+      &:hover {
+        color: #000;
+      }
+
+      .new-indicator {
+        top: 8px;
+        right: 8px;
+        width: 8px;
+        height: 8px;
+        background-color: #dc3545;
+        border-radius: 50%;
+      }
+    }
+
+    .avatar-wrapper {
+      .avatar {
+        width: 36px;
+        height: 36px;
+        object-fit: cover;
+        border: 2px solid #fff;
+      }
+    }
+  }
+}

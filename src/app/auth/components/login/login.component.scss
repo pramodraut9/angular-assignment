@@ -1,75 +1,83 @@
 .login-container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e7f1 100%);
-  padding: 2rem;
+  background-color: #f4fdff;
 }
 
 .login-card {
   background: white;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  padding: 2.5rem;
-  width: 100%;
-  max-width: 420px;
-  margin-bottom: 3rem;
+  padding: 40px 30px;
+  width: 420px;
+  text-align: center;
+  border-radius: 20px;
+  border-top: #AF3A6E solid 1px;
+  border-right: #AF3A6E solid 1px;
+  border-left: #AF3A6E solid 1px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .welcome-title {
-  font-weight: 700;
-  font-size: 1.8rem;
-  letter-spacing: 1px;
-  color: #2d3748;
-  margin-bottom: 0.5rem;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 .runtime-text {
-  color: #718096;
-  font-size: 0.95rem;
+  color: gray;
+  font-size: 14px;
 }
 
-.login-form {
-  .form-control {
-    border: 1px solid #e2e8f0;
-    padding: 0.85rem 1.25rem;
-    border-radius: 10px;
-    transition: all 0.3s;
-
-    &:focus {
-      border-color: #4c6ef5;
-      box-shadow: 0 0 0 3px rgba(76, 110, 245, 0.1);
-    }
-  }
-
-  .btn-primary {
-    background: #4c6ef5;
-    border: none;
-    padding: 0.85rem;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    border-radius: 10px;
-    transition: background 0.3s;
-
-    &:hover {
-      background: #3d5ce0;
-    }
-  }
+.input-group {
+  position: relative;
 }
 
-.signup-link {
-  color: #718096;
-  font-size: 0.9rem;
+.input-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+  color: gray;
+}
 
-  a {
-    color: #4c6ef5;
-    text-decoration: none;
-    font-weight: 500;
+.form-control {
+  padding-left: 35px;
+  border: none;
+  border-bottom: 1px solid #999;
+  border-radius: 0;
+}
 
-    &:hover {
-      text-decoration: underline;
+.form-control:focus {
+  outline: none;
+  box-shadow: none;
+  border-bottom: 1px solid #333;
+}
+
+.btn-login {
+  background-color: #0d8cc2;
+  color: white;
+  border-radius: 12px;
+  font-weight: bold;
+  padding: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.forgot-password {
+  font-size: 14px;
+  color: black;
+  text-decoration: none;
+}
+
+.signup-text {
+  text-decoration: none;
+  color: red;
+  font-weight: bold;
+}
+.logo {
+    background-color: #f8f9fa;
+    img {
+      width: 70px;
+      height: 112px;
+      max-height: 90px;
     }
   }
-}

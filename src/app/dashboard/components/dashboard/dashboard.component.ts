@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { IProfile } from '../../Interfaces/Iprofile.interface';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,14 +8,10 @@ import { AuthService } from 'src/app/auth/services/auth.service';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  userName = 'Test Name';
-  teamName = '6666666666';
-  email = 'Test@gmail.com';
-  salesPerson = 'Sales person name';
-  contactNumber = '0000000000';
-  avatarUrl = '/assets/avatar.jpg';
+  profile: IProfile | null = null;
+  isLoading: boolean = false;
 
-  constructor(private _authService: AuthService) {}
+  constructor(private _authService: AuthService) { }
 
   ngOnInit(): void {
     this.getProfileData();
@@ -22,10 +19,21 @@ export class DashboardComponent implements OnInit {
 
   private getProfileData() {
     try {
-      this._authService.getProfileDetails().subscribe((res) => {
-        console.log(res, 'ress');
+      this.isLoading = true;
+      this._authService.getProfileDetails().subscribe((res: any) => {
+        this.profile = {
+          firstName: res.firstName ?? 'N/A',
+          lastName: res.lastName ?? '',
+          teamName: res.teamName ?? '',
+          email: res.email ?? '',
+          salesPerson: res.company.name ?? '',
+          contactNumber: res.phone ?? '',
+          avatarUrl: res.image ?? '',
+        }
+        this.isLoading = false;
       });
     } catch (error) {
+      this.isLoading = false;
       console.error(error);
     }
   }

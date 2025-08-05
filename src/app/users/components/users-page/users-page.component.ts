@@ -8,28 +8,23 @@ import { ApiService } from 'src/app/shared/services/api.service';
 })
 export class UsersPageComponent implements OnInit {
   users: any[] = [];
-
-  constructor(private _apiService: ApiService) {}
+  searchText: string = '';
+  isLoading: boolean = false;
+  constructor(private _apiService: ApiService) { }
 
   ngOnInit(): void {
-    this.users = Array.from({ length: 8 }, (_, i) => ({
-      id: i + 1,
-      firstName: 'John',
-      lastName: 'Doe',
-      gender: 'Male',
-      email: 'johndoe@gmail.com',
-      phone: '9890989098',
-      birthDate: new Date(1999, 6, 7),
-    }));
     this.getUsersData();
   }
 
   private getUsersData() {
     try {
-      this._apiService.getAllUsers().subscribe((res) => {
-        console.log(res, 'ress');
+      this.isLoading = true;
+      this._apiService.getAllUsers().subscribe((res: any) => {
+        this.users = res.users;
+        this.isLoading = false;
       });
     } catch (error) {
+      this.isLoading = false;
       console.error(error);
     }
   }

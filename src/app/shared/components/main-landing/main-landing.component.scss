@@ -1,0 +1,30 @@
+.main-layout {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  flex: 0 0 250px;
+  overflow-y: auto;
+  box-shadow:
+    3px 7px 16px rgba(0, 0, 0, 0.04),
+}
+
+.main-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  flex: 0 0 60px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  background: #f5f7fa;
+}

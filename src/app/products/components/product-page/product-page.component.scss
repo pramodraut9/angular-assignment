@@ -10,16 +10,59 @@
   hr {
     margin-top: 0.5rem;
     margin-bottom: 1.5rem;
+    border: solid 1px #1985B563;
   }
 
   table {
     th, td {
       vertical-align: middle;
-      white-space: nowrap;
+    }
+    th{
+      color: #111111CC;
+      font-size: 16px;
+    }
+    td{
+       color: #111111CC;
+       font-size: 14px;
     }
 
     tbody tr:hover {
       background-color: #f8f9fa;
     }
+
+    .product-image {
+      width: 30px;
+      height: 30px;
+    }
+
+    .description-cell {
+      max-width: 200px;
+      padding: 0;
+
+      .text-truncate {
+        display: block;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+    th.sortable {
+      cursor: pointer; user-select: none; position: relative;
+      padding-right: 1.5rem;
+    }
+    .sort-arrow {
+      position: absolute; right: 0.75rem; top: 50%;
+      width: 0; height: 0; border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      transform: translateY(-50%);
+      &.asc {
+        border-bottom: 8px solid #333;
+      }
+      &.desc {
+        border-top: 8px solid #333;
+      }
+    }
+    
   }
 }

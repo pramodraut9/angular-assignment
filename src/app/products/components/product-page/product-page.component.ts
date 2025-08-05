@@ -8,29 +8,40 @@ import { ApiService } from 'src/app/shared/services/api.service';
 })
 export class ProductPageComponent implements OnInit {
   products: any[] = [];
+  isLoading = false;
+  sortDirection: 'asc' | 'desc' = 'asc';
 
-  constructor(private _apiService: ApiService) {}
+  constructor(private _apiService: ApiService) { }
 
   ngOnInit(): void {
-    const sampleDesc =
-      'The Essence Mascara Lash Princess is a popular mascara known for its volumizing.';
-    this.products = Array.from({ length: 8 }, (_, i) => ({
-      id: i + 1,
-      title: 'Essence Mascara Lash Princess',
-      description: `${sampleDesc} View More`,
-      category: 'Beauty',
-      price: 9.99,
-    }));
     this.getProductData();
   }
 
   private getProductData() {
-    try {
-      this._apiService.getAllProducts().subscribe((res) => {
-        console.log(res, 'ress');
-      });
-    } catch (error) {
-      console.error(error);
-    }
+    this.isLoading = true;
+    this._apiService.getAllProducts().subscribe(
+      (res: any) => {
+        this.products = res.products;
+        this.sortByPrice();
+        this.isLoading = false;
+      },
+      (error) => {
+        console.error(error);
+        this.isLoading = false;
+      }
+    );
+  }
+
+  toggleSort() {
+    this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    this.sortByPrice();
+  }
+
+  private sortByPrice() {
+    this.products.sort((a, b) => {
+      return this.sortDirection === 'asc'
+        ? a.price - b.price
+        : b.price - a.price;
+    });
   }
 }

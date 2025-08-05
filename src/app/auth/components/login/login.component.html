@@ -1,28 +1,46 @@
-<div class="login-container">
+<div class="login-container d-flex flex-column">
+  <div class="logo text-center py-4">
+    <img src="assets/images/logo.png" alt="Logo" class="img-fluid" />
+  </div>
   <div class="login-card">
-    <div class="text-center mb-5">
+    <div class="text-center mb-3">
       <h1 class="welcome-title">WELCOME BACK</h1>
-      <p class="runtime-text">Please Login to your account</p>
+      <p class="runtime-text">Please login to your account</p>
     </div>
 
     <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)" class="login-form">
-      <div class="mb-3">
-        <input type="text" formControlName="username" class="form-control form-control-lg" placeholder="Username">
-        <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
-          <small class="text-danger">Username is required</small>
-        </div>
+
+      <div class="input-group mb-3">
+        <span class="input-icon"><i class="bi bi-person"></i></span>
+        <input type="text" formControlName="username" class="form-control" placeholder="USERNAME">
       </div>
-      <div class="mb-4">
-        <input type="password" formControlName="password" class="form-control form-control-lg" placeholder="Password">
-        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
-          <small class="text-danger">Password is required</small>
-        </div>
+      <div *ngIf="loginForm.get('username')?.touched && loginForm.get('username')?.invalid" class="text-danger mb-2">
+        <small>Username is required</small>
       </div>
-      <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary btn-lg w-100">LOGIN</button>
+
+      <div class="input-group mb-3">
+        <span class="input-icon"><i class="bi bi-lock"></i></span>
+        <input type="password" formControlName="password" class="form-control" placeholder="PASSWORD">
+      </div>
+      <div *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid" class="text-danger mb-2">
+        <small>Password is required</small>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="rememberMe">
+          <label class="form-check-label" for="rememberMe">Remember Me</label>
+        </div>
+        <a class="forgot-password">Forgot password?</a>
+      </div>
+
+      <button type="submit" [disabled]="loginForm.invalid" class="btn btn-login w-50">
+        LOGIN
+      </button>
     </form>
 
-    <div class="signup-link mt-4 text-center">
-      Don't have an account? <a href="#">Sign up</a>
+    <div class="signup-link text-center mt-3">
+      Don't have an account? <a class="signup-text"> Sign up.</a>
     </div>
   </div>
 </div>

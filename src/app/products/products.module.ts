@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { ProductsRoutingModule } from './products-routing.module';
 import { ProductPageComponent } from './components/product-page/product-page.component';
+import { SortPipe } from './pipes/sort.pipe';
 
 
 @NgModule({
   declarations: [
-    ProductPageComponent
+    ProductPageComponent,
+    SortPipe
   ],
   imports: [
     CommonModule,

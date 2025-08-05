@@ -1,56 +1,70 @@
-<nav class="sidebar d-flex flex-column justify-content-between">
+<nav class="sidebar d-flex flex-column w-100">
   <div class="logo text-center py-4">
-    <img src="assets/logo.png" alt="Logo" class="img-fluid" />
+    <img src="assets/images/logo.png" alt="Logo" class="img-fluid" />
   </div>
 
-  <!-- Main nav links -->
-  <ul class="nav flex-column">
+  <ul class="nav flex-column main-nav">
     <li class="nav-item">
-      <a
-        class="nav-link"
-        [routerLink]="['/dashboard']"
-        routerLinkActive="active"
-        [routerLinkActiveOptions]="{ exact: true }"
-      >
+      <a class="nav-link" [routerLink]="['/dashboard']" routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }">
         Dashboard
       </a>
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link"
-        [routerLink]="['/users']"
-        routerLinkActive="active"
-      >
+      <a class="nav-link" [routerLink]="['/users']" routerLinkActive="active">
         User Page
       </a>
     </li>
     <li class="nav-item">
-      <a
-        class="nav-link"
-        [routerLink]="['/products']"
-        routerLinkActive="active"
-      >
+      <a class="nav-link" [routerLink]="['/products']" routerLinkActive="active">
         Product Page
       </a>
     </li>
   </ul>
 
-  <!-- Footer actions -->
-  <ul class="nav flex-column mb-4">
+  <ul class="nav flex-column footer-nav mt-auto mb-4">
     <li class="nav-item">
-      <a class="nav-link small" href="#">
-        <i class="bi bi-gear-fill me-2"></i>Setting
+      <a class="nav-link small">
+        <div>
+          <img class="sidebar-icon me-2" src="assets/images/settings.png" alt="Setting">
+          Setting
+        </div>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link small" href="#">
-        <i class="bi bi-question-circle-fill me-2"></i>Help
+      <a class="nav-link small">
+        <div>
+          <img class="sidebar-icon me-2" src="assets/images/help.png" alt="Help">
+          Help
+        </div>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link small" href="#">
-        <i class="bi bi-box-arrow-right me-2"></i>Logout
+      <a class="nav-link small" (click)="openLogoutModal(logoutTemplate)">
+        <div>
+          <img class="sidebar-icon me-2" src="assets/images/logout.png" alt="Logout">
+          Logout
+        </div>
       </a>
     </li>
   </ul>
 </nav>
+
+<ng-template #logoutTemplate>
+  <div class="modal-body text-center p-0">
+    <div class="header-bg">
+      <div class="icon-container mb-3 pt-3">
+        <div class="delete-container bg-danger text-white rounded-circle p-3">
+          <img class="delete-icon" src="assets/images/delete-popup.png" alt="Delete">
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 p-4">
+      <h5 class="mb-2">Are you sure !</h5>
+      <p class="small text-muted">
+        Lorem Ipsum is a placeholder text commonly used in the printing and publishing
+      </p>
+      <button class="btn btn-logout px-4 mt-2" (click)="logout()">Log Out</button>
+    </div>
+  </div>
+</ng-template>

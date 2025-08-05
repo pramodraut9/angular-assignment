@@ -1,10 +1,8 @@
 <div class="product-table-card p-4 rounded shadow-sm bg-white">
-  <!-- Header -->
   <h3 class="mb-3">Product Table</h3>
   <hr />
 
-  <!-- Table -->
-  <div class="table-responsive">
+  <div *ngIf="products && !isLoading" class="table-responsive">
     <table class="table align-middle mb-0">
       <thead class="table-light">
         <tr>
@@ -12,7 +10,10 @@
           <th>Title</th>
           <th>Description</th>
           <th>Category</th>
-          <th>Price (USD)</th>
+          <th (click)="toggleSort()" class="sortable">
+            Price (USD)
+            <span class="sort-arrow" [class.asc]="sortDirection==='asc'" [class.desc]="sortDirection==='desc'"></span>
+          </th>
           <th>Image</th>
         </tr>
       </thead>
@@ -20,16 +21,25 @@
         <tr *ngFor="let p of products">
           <td>{{ p.id }}</td>
           <td>{{ p.title }}</td>
-          <td class="text-nowrap text-truncate" [title]="p.description">
-            {{ p.description }}
+          <td class="description-cell">
+            <div class="text-truncate" [title]="p.description">
+              {{ p.description }}
+            </div>
           </td>
           <td>{{ p.category }}</td>
-          <td>\${{ p.price.toFixed(2) }}</td>
+          <td>${{ p.price.toFixed(2) }}</td>
           <td>
-            <i class="bi bi-image display-6 text-secondary"></i>
+            <div class="product-image-wrapper">
+              <img class="product-image" [src]="p.images[0]" [alt]="p.title" />
+            </div>
           </td>
         </tr>
       </tbody>
     </table>
+  </div>
+  <div *ngIf="isLoading && !products" class="text-center">
+    <div class="spinner-border text-primary" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
   </div>
 </div>

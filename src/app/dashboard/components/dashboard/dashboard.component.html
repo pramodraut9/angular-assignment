@@ -1,39 +1,42 @@
-<div class="dashboard-welcome-card p-4 rounded shadow-sm mb-4">
-  <i class="bi bi-gear-fill gear-icon"></i>
+<div class="dashboard-welcome-card   shadow-sm mb-4">
+  <div class="setting-gear">
+    <img class="setting-icon" src="assets/images/white-settings.png" alt="setting">
+  </div>
 
-  <div class="row align-items-center">
-    <!-- left: texts -->
+  <div *ngIf="profile && !isLoading" class="row align-items-center inner-div">
     <div class="col-md-8">
-      <h2 class="mb-4">WELCOME, {{ userName | uppercase }} !</h2>
+      <h2 class="mb-4">WELCOME, <span class="user-name">{{ (profile.firstName + ' ' + profile.lastName) | uppercase }}
+          !</span></h2>
 
       <div class="row info-rows">
         <div class="col-6 info-col mb-3">
           <small class="label">Test Team</small>
-          <div class="value">{{ teamName }}</div>
+          <div class="value">{{ profile.teamName }}</div>
         </div>
         <div class="col-6 info-col mb-3">
           <small class="label">E-mail</small>
-          <div class="value">{{ email }}</div>
+          <div class="value">{{ profile.email }}</div>
         </div>
         <div class="col-6 info-col">
           <small class="label">Sales Person</small>
-          <div class="value">{{ salesPerson }}</div>
+          <div class="value">{{ profile.salesPerson }}</div>
         </div>
         <div class="col-6 info-col">
           <small class="label">Contact Number</small>
-          <div class="value">{{ contactNumber }}</div>
+          <div class="value">{{ profile.contactNumber }}</div>
         </div>
       </div>
     </div>
 
-    <!-- right: avatar -->
     <div class="col-md-4 text-center">
       <div class="avatar-wrapper mx-auto">
-        <img [src]="avatarUrl" alt="User Avatar" class="avatar" />
+        <img [src]="profile.avatarUrl" alt="User Avatar" class="avatar" />
       </div>
     </div>
   </div>
+  <div *ngIf="isLoading && !profile" class="text-center">
+    <div class="spinner-border text-white" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div>
 </div>
-
-<!-- your existing dashboard content goes below -->
-<router-outlet></router-outlet>

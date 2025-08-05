@@ -4,10 +4,11 @@ import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { MainLandingComponent } from './components/main-landing/main-landing.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [HeaderComponent, SidebarComponent, MainLandingComponent],
-  imports: [CommonModule, RouterModule],
-  exports: [HeaderComponent, SidebarComponent],
+  imports: [CommonModule, RouterModule, ModalModule.forRoot()],
+  exports: [HeaderComponent, SidebarComponent, MainLandingComponent],
 })
-export class SharedModule {}
+export class SharedModule { }

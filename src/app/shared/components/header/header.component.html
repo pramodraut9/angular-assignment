@@ -1,19 +1,13 @@
 <header class="app-header d-flex align-items-center justify-content-between px-4">
-  <!-- Page title -->
-  <h1 class="page-title mb-0">Dashboard</h1>
+  <h1 class="page-title mb-0">{{pageTitle}}</h1>
 
-  <!-- Right-side actions -->
   <div class="actions d-flex align-items-center">
-    <!-- Notification bell -->
-    <button type="button" class="btn btn-link position-relative me-3">
-      <i class="bi bi-bell-fill"></i>
-      <!-- little dot -->
-      <span class="new-indicator position-absolute"></span>
-    </button>
+    <div class="me-3">
+      <img src="assets/images/notification.png" alt="notification" class="notification-icon">
+    </div>
 
-    <!-- User avatar -->
     <div class="avatar-wrapper">
-      <img src="assets/avatar.jpg" alt="User avatar" class="avatar rounded-circle" />
+      <img [src]="[profileImage]" alt="User avatar" class="avatar rounded-circle" />
     </div>
   </div>
 </header>

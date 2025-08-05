@@ -1,10 +1,12 @@
 <div class="user-table-card p-4 rounded shadow-sm bg-white">
-  <!-- Header -->
   <h3 class="mb-3">User Table</h3>
   <hr />
 
-  <!-- Table -->
-  <div class="table-responsive">
+  <div class="d-flex mb-3">
+    <input type="text" class="form-control" name="search" [(ngModel)]="searchText" placeholder="Search first name here"
+      class="form-control" />
+  </div>
+  <div *ngIf="users && !isLoading" class="table-responsive">
     <table class="table align-middle mb-0">
       <thead class="table-light">
         <tr>
@@ -21,8 +23,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let u of users">
-          <td>{{ u.id }}</td>
+        <tr *ngFor="let u of users | filter:searchText; let i = index;">
+          <td>{{ i + 1 }}</td>
           <td>{{ u.firstName }}</td>
           <td>{{ u.lastName }}</td>
           <td>{{ u.gender }}</td>
@@ -30,10 +32,12 @@
           <td>{{ u.phone }}</td>
           <td>{{ u.birthDate | date:'dd/MM/yyyy' }}</td>
           <td>
-            <i class="bi bi-image display-6 text-secondary"></i>
+            <div class="user-image-wrapper">
+              <img class="user-image" [src]="u.image" [alt]="u.firstName" />
+            </div>
           </td>
           <td>
-            <button class="btn btn-sm btn-warning">Edit</button>
+            <button class="btn btn-sm btn-warning rounded-5">Edit</button>
           </td>
           <td>
             <a class="text-decoration-none">View Details</a>
@@ -41,5 +45,11 @@
         </tr>
       </tbody>
     </table>
+  </div>
+
+  <div *ngIf="isLoading && !users" class="text-center">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
   </div>
 </div>

@@ -73,24 +73,3 @@
     }
   }
 }
-
-.stats-container {
-  display: flex;
-  gap: 3rem;
-  text-align: center;
-}
-
-.stats-column {
-  .stat-value {
-    font-weight: 600;
-    color: #2d3748;
-    font-size: 1.1rem;
-    line-height: 1.6;
-  }
-
-  .stat-label {
-    color: #718096;
-    font-size: 0.9rem;
-    margin-top: 0.25rem;
-  }
-}

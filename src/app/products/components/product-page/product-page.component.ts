@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/shared/services/api.service';
 
 @Component({
   selector: 'app-product-page',
@@ -7,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductPageComponent implements OnInit {
   products: any[] = [];
+
+  constructor(private _apiService: ApiService) {}
 
   ngOnInit(): void {
     const sampleDesc =
@@ -18,5 +21,16 @@ export class ProductPageComponent implements OnInit {
       category: 'Beauty',
       price: 9.99,
     }));
+    this.getProductData();
+  }
+
+  private getProductData() {
+    try {
+      this._apiService.getAllProducts().subscribe((res) => {
+        console.log(res, 'ress');
+      });
+    } catch (error) {
+      console.error(error);
+    }
   }
 }

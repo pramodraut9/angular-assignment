@@ -8,11 +8,11 @@ import { HttpService } from 'src/app/shared/services/http.service';
 export class AuthService {
   constructor(private _http: HttpService) {}
 
-  login<T>(Username: string, Password: string): Observable<T> {
-    return this._http.post<any>('auth/login', { Username, Password });
+  login<T>(username: string, password: string): Observable<T> {
+    return this._http.post<any>('auth/login', { username, password });
   }
 
-  getAllProducts<T>(): Observable<T> {
+  getProfileDetails<T>(): Observable<T> {
     return this._http.get<any>('auth/me');
   }
 }
